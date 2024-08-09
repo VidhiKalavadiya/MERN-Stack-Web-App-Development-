@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Activity</title>
+    <style>
+        #colorDiv {
+            width: 200px;
+            height: 200px;
+            background-color: lightgrey;
+            margin: 20px;
+        }
+        input {
+            display: block;
+            margin: 10px 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="colorDiv">Click me to change my color</div>
+    <input type="text" id="textInput" placeholder="Focus on me to change border color">
+    <form id="myForm">
+        <input type="text" id="formInput" placeholder="Enter something">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Function to change the background color of a <div> element to a random color when it is clicked
+        function changeBackgroundColor() {
+            const colorDiv = document.getElementById('colorDiv');
+            colorDiv.addEventListener('click', function() {
+                const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                colorDiv.style.backgroundColor = randomColor;
+            });
+        }
+
+        // Function to display an alert saying "Page Loaded!" when the page is fully loaded
+        function showAlertOnPageLoad() {
+            window.addEventListener('load', function() {
+                alert('Page Loaded!');
+            });
+        }
+
+        // Function to change the border color of an input field to blue when it receives focus
+        function changeBorderColorOnFocus() {
+            const textInput = document.getElementById('textInput');
+            textInput.addEventListener('focus', function() {
+                textInput.style.borderColor = 'blue';
+            });
+        }
+
+        // Function to validate a form to ensure the input field is not empty before submitting
+        function validateForm() {
+            const form = document.getElementById('myForm');
+            form.addEventListener('submit', function(event) {
+                const formInput = document.getElementById('formInput');
+                if (formInput.value.trim() === '') {
+                    alert('Input field cannot be empty');
+                    event.preventDefault(); // Prevent form from submitting
+                }
+            });
+        }
+
+        // Initialize functions
+        changeBackgroundColor();
+        showAlertOnPageLoad();
+        changeBorderColorOnFocus();
+        validateForm();
+    </script>
+</body>
+</html>
